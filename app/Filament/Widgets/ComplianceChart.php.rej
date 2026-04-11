@@ -1,0 +1,9 @@
+@@ -62,7 +62,7 @@
+     {
+         return \Filament\Support\RawJs::make(<<<JS
+         {
+-            maintainAspectRatio: false,
++            aspectRatio: 1,
+             plugins: {
+                 legend: {
+                     display: true,

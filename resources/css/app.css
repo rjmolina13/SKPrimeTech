@@ -1,0 +1,36 @@
+@import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+/* Include Filament views so Tailwind compiles utilities used by standalone tables/charts */
+@source '../../vendor/filament/**/*.blade.php';
+@source '../../app/Filament/**/*.php';
+@source '../../app/Livewire/**/*.php';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+    --color-primary-50: #eef4fb;
+    --color-primary-100: #dce8f7;
+    --color-primary-200: #b9d0ef;
+    --color-primary-300: #97b8e6;
+    --color-primary-400: #6a96d2;
+    --color-primary-500: #1a508e;
+    --color-primary-600: #164678;
+    --color-primary-700: #123c64;
+    --color-primary-800: #0f3150;
+    --color-primary-900: #0c283f;
+    --color-primary-950: #081c2c;
+}
+
+/* Keep primary (blue) button labels white in light mode across Filament */
+:root:not(.dark) .fi-btn.fi-color-primary,
+:root:not(.dark) .fi-btn.fi-color-primary:hover,
+:root:not(.dark) .fi-btn.fi-color-primary:focus-visible,
+:root:not(.dark) .fi-btn.fi-color-primary:active {
+    color: #fff !important;
+}

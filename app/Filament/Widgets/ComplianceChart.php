@@ -1,0 +1,81 @@
+<?php
+
+namespace App\Filament\Widgets;
+
+use App\Models\FormSubmission;
+use App\Models\Municipality;
+use Filament\Widgets\ChartWidget;
+use App\Models\Barangay;
+use Illuminate\Support\Facades\Auth;
+
+class ComplianceChart extends ChartWidget
+{
+    protected ?string $heading = 'Compliance Overview';
+
+    protected static ?int $sort = 3;
+
+    protected int | string | array $columnSpan = 1;
+    protected ?string $maxHeight = '350px';
+
+    public static function canView(): bool
+    {
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+        return $user->hasRole(['super_admin', 'admin']);
+    }
+
+    protected function getData(): array
+    {
+        $municipalities = Municipality::all();
+        $labels = [];
+        $data = [];
+
+        foreach ($municipalities as $municipality) {
+            $count = FormSubmission::where('status', 'approved')
+                ->where(function ($query) use ($municipality) {
+                    $query->where(function ($q) use ($municipality) {
+                        $q->where('record_type', Municipality::class)
+                          ->where('record_id', $municipality->id);
+                    })->orWhere(function ($q) use ($municipality) {
+                        $q->where('record_type', Barangay::class)
+                          ->whereIn('record_id', $municipality->barangays()->pluck('id'));
+                    });
+                })
+                ->count();
+            
+            $labels[] = $municipality->name;
+            $data[] = $count;
+        }
+
+        return [
+            'datasets' => [
+                [
+                    'label' => 'Approved Submissions',
+                    'data' => $data,
+                    'backgroundColor' => '#10b981', // success color
+                ],
+            ],
+            'labels' => $labels,
+        ];
+    }
+
+    protected function getOptions(): array|\Filament\Support\RawJs|null
+    {
+        return \Filament\Support\RawJs::make(<<<JS
+        {
+            aspectRatio: 1,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'bottom',
+                },
+            }
+        }
+        JS);
+    }
+
+    protected function getType(): string
+    {
+        return 'bar';
+    }
+}

@@ -1,0 +1,76 @@
+@import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
+
+@source '../../../vendor/filament/**/*.blade.php';
+@source '../../../app/Filament/**/*.php';
+@source '../../views/filament/**/*.blade.php';
+@source '../../views/components/**/*.blade.php';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* Sidebar Header Adjustment */
+.fi-sidebar-header {
+    height: auto !important;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* Custom Branding Styles */
+.sk-prime-brand {
+    @apply text-xl font-bold tracking-tight text-gray-950 dark:text-white;
+}
+
+.sk-prime-subtitle {
+    @apply text-[10px] leading-3 text-gray-500 dark:text-gray-400 mt-1 hidden md:block;
+    max-width: 220px;
+    /* Reduced width to fit sidebar better */
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+/* Footer Adjustment */
+.fi-main {
+    padding-bottom: 4rem;
+    /* Ensure footer doesn't overlap content */
+}
+
+/* Smooth Sidebar & Layout Transitions */
+aside.fi-sidebar {
+    transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1), margin 300ms cubic-bezier(0.4, 0, 0.2, 1), transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: width, margin, transform;
+}
+
+.fi-main {
+    transition: margin-left 300ms cubic-bezier(0.4, 0, 0.2, 1), padding-left 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: margin-left, padding-left;
+}
+
+header.fi-topbar {
+    transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1), margin-left 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: width, margin-left;
+}
+
+/* Smooth fade for sidebar labels when collapsing */
+.fi-sidebar-item-label {
+    transition: opacity 150ms ease-in-out;
+}
+
+/* Ensure the sidebar nav container handles overflow during transition */
+.fi-sidebar-nav {
+    overflow-x: hidden;
+}
+
+/* Force white text for user menu in dark mode */
+.dark .fi-user-menu-trigger span {
+    @apply text-white;
+}
+
+/* Keep primary (blue) button labels white in light mode across Filament */
+:root:not(.dark) .fi-btn.fi-color-primary,
+:root:not(.dark) .fi-btn.fi-color-primary:hover,
+:root:not(.dark) .fi-btn.fi-color-primary:focus-visible,
+:root:not(.dark) .fi-btn.fi-color-primary:active {
+    color: #fff !important;
+}
