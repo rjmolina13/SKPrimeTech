@@ -1,6 +1,7 @@
 node_modules
-build
-dist
+/build
+/dist
+/public/vendor
 .git
 .trae
 .log

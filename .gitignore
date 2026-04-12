@@ -17,6 +17,7 @@
 /public/build
 /public/hot
 /public/storage
+/public/vendor
 /storage/*.key
 /storage/pail
 /vendor
@@ -39,3 +40,5 @@ skills-lock.json
 # Exclude all ignore files
 .ignore/
 /.ignore/*
+.vercel
+/.vercel-global/

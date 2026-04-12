@@ -120,3 +120,20 @@
 [2026-04-11 10:18:14 PM] feature Updated About Us contact layout to a 4-column structure, set socials block to a 1x4 grid, and widened the address area.
 [2026-04-11 10:21:13 PM] feature Reformatted the About Us "Our History" content into paragraph blocks for improved readability while preserving the updated narrative.
 [2026-04-11 10:25:55 PM] fix Cleaned deployment leftovers from project root, moved local artifacts into `.ignore/leftovers/`, and updated `.gitignore` and `.vercelignore` for Vercel deployment prep.
+[2026-04-11 10:37:21 PM] docs Updated deployment checklist for SKPrimeTech repo naming, Laravel cache env key alignment, and explicit SQLite-to-Supabase migration flow without database re-initialization.
+[2026-04-11 10:47:10 PM] feature Updated Supabase CLI setup by upgrading CLI, creating and linking the SKPrimeTech-DB project, and initializing local Supabase project config.
+[2026-04-11 10:50:51 PM] fix Switched linked Supabase project to new `SKPrimeTech` project name and refreshed local `.ignore` credentials/details file to match the new project ref and keys.
+[2026-04-11 11:46:20 PM] fix Configured Vercel CLI deployment setup for `skprimetech`, updated Vercel runtime config output directory and cache env key, and protected local CLI auth cache folder from Git tracking.
+[2026-04-12 12:23:38 AM] fix Updated Vercel runtime packaging and production DB connectivity settings (Supabase pooler host/user) while continuing live debugging for `/dashboard/login` server errors.
+
+[2026-04-12 12:45:58 AM] fix Fixed Vercel deployment 500 error on /dashboard/login by updating .vercelignore to only exclude root /dist and /build, preserving necessary vendor files (Livewire manifest).
+
+[2026-04-12 01:00:20 AM] fix Fixed mixed content (HTTP/HTTPS) issues on Vercel by trusting all proxies and forcing HTTPS scheme in production environment.
+
+[2026-04-12 01:15:22 AM] fix Updated Vercel routing configuration to directly serve static assets (CSS, JS, Fonts, Images) from the public directory instead of routing them through the PHP handler, resolving 404s and false mixed-content errors.
+
+[2026-04-12 07:42:36 AM] fix Resolved 403 Forbidden Livewire update errors on Vercel by publishing the Livewire config, explicitly setting the update_route path to match the hashed Vercel build URL, and updating the CSRF validation bypass.
+
+[2026-04-12 07:51:05 AM] fix Resolved 403 Forbidden error on /dashboard navigation by implementing FilamentUser and canAccessPanel() on the User model to explicitly authorize panel access in production.
+
+[2026-04-12 08:09:38 AM] fix Fixed Livewire JS load failure (Unexpected token '<') by publishing Livewire assets to the public directory and routing Vercel asset requests directly instead of via PHP.

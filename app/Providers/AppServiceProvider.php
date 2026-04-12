@@ -32,6 +32,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        if (config('app.env') === 'production') {
+            \Illuminate\Support\Facades\URL::forceScheme('https');
+        }
+
         Gate::policy(Municipality::class, MunicipalityPolicy::class);
         Gate::policy(Barangay::class, BarangayPolicy::class);
         Gate::policy(User::class, UserPolicy::class);

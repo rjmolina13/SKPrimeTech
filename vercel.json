@@ -1,16 +1,20 @@
 {
     "version": 2,
     "framework": "vite",
+    "outputDirectory": "public",
     "functions": {
-        "api/index.php": { "runtime": "vercel-php@0.7.2" }
+        "api/index.php": {
+            "runtime": "vercel-php@0.7.2",
+            "includeFiles": "vendor/**"
+        }
     },
     "routes": [
         {
-            "src": "/build/(.*)",
-            "dest": "/public/build/$1"
+            "src": "/(build|css|js|fonts|images|system|vendor|livewire)/(.*)",
+            "dest": "/public/$1/$2"
         },
         {
-            "src": "/(favicon.ico|robots.txt)",
+            "src": "/(favicon.ico|robots.txt|favicon.svg)",
             "dest": "/public/$1"
         },
         {
@@ -20,15 +24,13 @@
     ],
     "env": {
         "APP_ENV": "production",
-        "APP_DEBUG": "false",
-        "APP_URL": "https://${VERCEL_URL}",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
         "APP_ROUTES_CACHE": "/tmp/routes.php",
         "APP_SERVICES_CACHE": "/tmp/services.php",
         "VIEW_COMPILED_PATH": "/tmp",
-        "CACHE_DRIVER": "array",
+        "CACHE_STORE": "array",
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie"
     }
