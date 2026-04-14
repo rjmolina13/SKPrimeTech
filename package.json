@@ -15,6 +15,7 @@
         "vite": "^7.0.7"
     },
     "dependencies": {
+        "@vercel/speed-insights": "^2.0.0",
         "docx-preview": "^0.3.7",
         "xlsx": "^0.18.5"
     }

@@ -139,3 +139,6 @@
 [2026-04-12 08:09:38 AM] fix Fixed Livewire JS load failure (Unexpected token '<') by publishing Livewire assets to the public directory and routing Vercel asset requests directly instead of via PHP.
 
 [2026-04-12 02:17:50 PM] build Converted favicon.svg to favicon.ico via temporary Python script to ensure cross-browser compatibility, and pushed update to GitHub and Vercel.
+[2026-04-14 10:26:47 AM] fix Ensured Filament login page favicon uses a scheme-safe path to prevent mixed-content blocking on HTTPS deployment.
+
+[2026-04-14 11:55:58 AM] feature Integrated @vercel/speed-insights into the main app.js bundle to enable real-time performance tracking and Web Vitals monitoring on Vercel dashboard.
