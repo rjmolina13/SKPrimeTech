@@ -150,3 +150,5 @@
 [2026-04-20 10:34:13 AM] fix Restored missing generic admin@rubyj.xyz account and correctly separated super_admin and admin roles in both SQLite and Supabase PostgreSQL databases.
 
 [2026-04-20 10:42:28 AM] auth Updated all user account passwords in both local SQLite and remote Supabase databases to match the production credentials list.
+[2026-04-20 10:49:57 AM] fix Added symfony/polyfill-php84 to fix Class 'Dom\HTMLDocument' not found on PHP 8.3 environments.
+
