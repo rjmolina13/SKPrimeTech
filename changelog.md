@@ -146,3 +146,5 @@
 [2026-04-20 10:02:19 AM] config Updated Vercel serverless function region to Singapore (sin1) via vercel.json to co-locate compute with the Supabase PostgreSQL database, minimizing connection latency for users in the Philippines.
 
 [2026-04-20 10:26:00 AM] fix Consolidated and cleaned up duplicate user accounts and municipality names in both local SQLite and remote Supabase PostgreSQL databases based on Municipalities list, transferring related records securely. Also updated municipality code attributes to standard Catanduanes zip codes.
+
+[2026-04-20 10:34:13 AM] fix Restored missing generic admin@rubyj.xyz account and correctly separated super_admin and admin roles in both SQLite and Supabase PostgreSQL databases.
