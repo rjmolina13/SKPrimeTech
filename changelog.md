@@ -144,3 +144,5 @@
 [2026-04-14 11:55:58 AM] feature Integrated @vercel/speed-insights into the main app.js bundle to enable real-time performance tracking and Web Vitals monitoring on Vercel dashboard.
 
 [2026-04-20 10:02:19 AM] config Updated Vercel serverless function region to Singapore (sin1) via vercel.json to co-locate compute with the Supabase PostgreSQL database, minimizing connection latency for users in the Philippines.
+
+[2026-04-20 10:26:00 AM] fix Consolidated and cleaned up duplicate user accounts and municipality names in both local SQLite and remote Supabase PostgreSQL databases based on Municipalities list, transferring related records securely. Also updated municipality code attributes to standard Catanduanes zip codes.
