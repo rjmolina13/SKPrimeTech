@@ -142,3 +142,5 @@
 [2026-04-14 10:26:47 AM] fix Ensured Filament login page favicon uses a scheme-safe path to prevent mixed-content blocking on HTTPS deployment.
 
 [2026-04-14 11:55:58 AM] feature Integrated @vercel/speed-insights into the main app.js bundle to enable real-time performance tracking and Web Vitals monitoring on Vercel dashboard.
+
+[2026-04-20 10:02:19 AM] config Updated Vercel serverless function region to Singapore (sin1) via vercel.json to co-locate compute with the Supabase PostgreSQL database, minimizing connection latency for users in the Philippines.
